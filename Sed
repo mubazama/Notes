@@ -1,0 +1,39 @@
+********************************************************************************************************************
+
+                                           SED & Curl COMMAND EXAMPLES
+
+********************************************************************************************************************
+
+add a line at the top of a file 
+
+sed -i '1 i\line to be added ' file 
+
+add a line at the top of a file 
+
+sed -i '$ i\line to be added here'  file   
+
+insert a line after a match
+
+sed -i '/string match/a insert text here'   file 
+
+insert a line at the line n 
+
+
+sed -i 'ni avatar' file 
+
+exple sed -i '6i enter your text here' file 
+
+insert many line after a specific line 
+
+
+sed -i $'/Line to insert after/a\ i Line one to insert \\n
+second new line to insert \\n
+third new line to insert' file
+
+or 
+
+sed -i $'/line to insert after/a\line1\\nline2\\nline3' file
+
+
+
+use curl to download 
