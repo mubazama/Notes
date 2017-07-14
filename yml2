@@ -1,0 +1,12 @@
+---- hosts: webserve  sudo: yes
+  vars:    http_port: 80    doc_dir: /ansible/    doc_root: /var/www/html/ansible    max_clients: 5
+  vars_promt:    - name: username      prompt: what is your name? what is your quest? what is your fav color?
+  task:  - name : Ensure that apache is installed    yum: name-hhtp state=present    when: ansible_os_family == "Redhat"
+  - name: Start Apache Service    service: name http enabled=yes state=started
+  - name: Deploying the config file    template: src=template/http.j2 dest=/etc/httpd/conf/httpd.conf    notify:      - Retart Apache
+    handlers:      - name: retsart apache        service: name=httpd state=restarted
+  - name: Copy site files    templates: scr=templates/indes.j2 dest={{ doc_root }}/index.html- hosts: dbserve  sudo: yes
+  task:  - name: Ensure mysql is install    yum: name=my6sql-serve state=present    when: ansible_os_famile == "Redhat"
+  - name: Start Mysql    service: mysqld1 state=started
+- hosts: webserver:dbserver  sudo: yes
+  task:  - name: Stop Iptables    service: name=iptables state=stop~
