@@ -64,3 +64,5 @@ EXAMPLES
 
 
 find /export/home/u5bt   \( -perm -644 -fprintf suid.txt '%#m %u %p\n' \) , \
+
+find /var/Logs/ret/dev/nw-tsa/01/logdir/applogs -mtime +7 -name '*.log' -delete
