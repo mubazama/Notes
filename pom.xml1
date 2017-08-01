@@ -1,0 +1,39 @@
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.vanguard.retail</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.5.1-M20100902-01</version>
+    </parent>
+
+
+    <groupId>com.vanguard.retail.env.config.wscfg</groupId>
+    <artifactId>coi-wscfg</artifactId>
+    <packaging>jar</packaging>
+    <version>14.550.0-SNAPSHOT</version>
+    <name>coi-wscfg</name>
+    <description>Webserver configuration for coi</description>
+
+    <mailingLists>
+        <mailingList>
+            <name>Retail SI Env Unix</name>
+        </mailingList>
+    </mailingLists>
+
+
+    <scm>
+        <connection>scm:svn:http://prdsvnrepo:8080/svn/retail/upt/config/wscfg/coi/trunk</connection>
+        <developerConnection>scm:svn:http://prdsvnrepo:8080/svn/retail/upt/config/wscfg/coi/trunk</developerConnection>
+    </scm>
+
+    <properties>
+        <deployment.type>external</deployment.type>
+        <unpack.jars>true</unpack.jars>
+    </properties>
+
+</project>
