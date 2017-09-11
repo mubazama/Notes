@@ -1,0 +1,35 @@
+If a web site accepts a connection through HTTP and redirects to HTTPS, the user in this case may initially talk to the non-encrypted version of the site before being redirected, if, for example, the user types http://www.foo.com/ or even just foo.com.
+
+This opens up the potential for a man-in-the-middle attack, where the redirect could be exploited to direct a user to a malicious site instead of the secure version of the original page.
+
+The HTTP Strict Transport Security feature lets a web site inform the browser that it should never load the site using HTTP, and should automatically convert all attempts to access the site using HTTP to HTTPS requests instead.
+-----------------------------------------------------------
+You log into a free WiFi access point at an airport and start surfing the web, visiting your online banking service to check your balance and pay a couple of bills. Unfortunately, the access point you're using is actually a hacker's laptop, and they're intercepting your original HTTP request and redirecting you to a clone of your bank's site instead of the real thing. Now your private data is exposed to the hacker.
+
+Strict Transport Security resolves this problem; as long as you've accessed your bank's web site once using HTTPS, and the bank's web site uses Strict Transport Security, your browser will know to automatically use only HTTPS, which prevents hackers from performing this sort of man-in-the-middle attack.
+
+
+###set Strict-Transport-Security "max-age=63072000###
+
+A client of ours emailed us a few days ago and told us that whenever he tries to access his website, he’s seeing the following error:
+
+Bad Request: Your browser sent a request that this server could not understand. Size of a request header field exceeds server limit.
+
+He told us that he was the only one in his company seeing this problem, but that he had no idea whether any of his website’s visitors was having the same problem. He asked us to investigate, and so we did.
+
+A quick research revealed that the issue was related to his browser having a huge cookie that was bigger than the maximum size allowed by the server. So, a fast solution to the problem was to ask him to clear his cookies on his browser. However, that didn’t technically solve the problem, it just made the problem go away. But, we know that these problems are like seagulls, when you shoo them away, they will leave, but they will eventually return.
+
+So, we had to solve this problem at its root, and solving it at its root meant that we had to increase the maximum size of the cookie allowed by the server at the server level. We did this the following way :
+
+We ssh’d to the server as root.
+We opened the file httpd.conf located under the /usr/local/apache/conf/ folder.
+
+We added the following line to the very beginning of the file:
+
+####LimitRequestFieldSize 16384####
+
+We saved the file and we restarted Apache.
+
+The problem was solved!
+
+
