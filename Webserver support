@@ -30,6 +30,19 @@ We added the following line to the very beginning of the file:
 
 We saved the file and we restarted Apache.
 
+
+
+
+
+Hashvalue="$(echo -e "P@$$w0rd\nP@$$w0rd" | grub-md5-crypt 2>/dev/null | tail --lines=1)"
+echo $hashvalue
+
+
+
+
+
+
+
 The problem was solved!
 
 
